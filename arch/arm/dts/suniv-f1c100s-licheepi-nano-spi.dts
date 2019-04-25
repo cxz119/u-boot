@@ -105,6 +105,24 @@
     };
 };
 
+&pio {
+ spi1_pins_a: spi1-pins-pa {
+				pins = "PA0", "PA1", "PA2", "PA3";
+				function = "spi1";
+	};
+};
+
+&spi1 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&spi1_pins_a>;
+	spidev@0 {
+		compatible = "rohm,dh2228fv";
+		spi-max-frequency = <48000000>;
+		reg = <0>;
+	};
+};
+
 &tcon0 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&lcd_rgb666_pins>;
